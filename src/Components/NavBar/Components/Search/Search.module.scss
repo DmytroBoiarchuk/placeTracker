@@ -1,0 +1,16 @@
+
+
+.searchContainer {
+  display: flex;
+  form {
+    display: flex;
+    align-items: center;
+    input {
+      border-radius: 6px;
+      font-size: 24px;
+      margin: 5px;
+    }
+    button {
+    }
+  }
+}

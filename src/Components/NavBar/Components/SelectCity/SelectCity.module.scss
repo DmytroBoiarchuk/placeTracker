@@ -1,0 +1,34 @@
+@use "../../../../scss/variables" as *;
+
+
+@keyframes changeBgColor {
+  0% {
+    background-color: #cbe8e0;
+  }
+  100% {
+    background-color: #91e8a0;
+  }
+}
+.selectCity {
+  position: relative;
+  ul {
+    @include custom-scrollbar;
+    max-height: 45vh;
+    overflow: auto;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    list-style: none;
+    li {
+      user-select: none;
+      background-color: #cbe8e0;
+      padding: 3px;
+      color: #014343;
+      &:hover {
+        background-color: #91e8a0;
+        animation: changeBgColor 0.5s ease normal ;
+      }
+    }
+  }
+}

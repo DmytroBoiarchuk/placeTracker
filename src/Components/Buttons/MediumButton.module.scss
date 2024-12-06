@@ -1,0 +1,31 @@
+@use "../../scss/variables" as *;
+@keyframes changeBgColor {
+  0% {
+    background-color: $button-color;
+  }
+  100% {
+    background-color: $button-color-hover;
+  }
+}
+@keyframes revertBgColor {
+  0% {
+    background-color: $button-color-hover;
+  }
+  100% {
+    background-color: $button-color;
+  }
+}
+.button {
+  width: 80px;
+  height: 35px;
+  border: 0;
+  border-radius: 6px;
+  background-color: $button-color;
+  &:hover {
+    background-color: $button-color-hover;
+    animation: changeBgColor 0.6s ease normal;
+  }
+  &:not(:hover) {
+    animation: revertBgColor 0.6s ease normal;
+  }
+}

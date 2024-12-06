@@ -1,0 +1,21 @@
+{
+  "extends": ["airbnb", "airbnb/hooks", "plugin:react/recommended", "plugin:react/jsx-runtime"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "import/prefer-default-export": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"]
+  }
+}
