@@ -1,0 +1,88 @@
+@use "../../../../scss/variables" as *;
+.cardInPending{
+  justify-content: center;
+  align-items: center;
+}
+.card{
+  min-height: 230px;
+  position: relative;
+  display: flex;
+  width: 1000px;
+  background: $places-card-bg;
+  margin: 5px;
+  border-radius: 10px;
+  box-shadow: $box-shadow;
+}
+.savedSign{
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  border: 0;
+  background-color: rgba(255, 255, 255, 0);
+  svg{
+    width: 20px;
+    height: 20px;
+  }
+}
+.infoWrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  h1{
+    font-size: 26px;
+    margin: 0;
+  }
+  p{
+    font-size: 24px;
+    font-family: "Eras Light ITC", serif;
+    font-style: italic;
+  }
+}
+.icon{
+  width: 64px;
+  height: 64px;
+}
+
+.photoContainer{
+  padding: 10px;
+  max-width: 200px;
+  max-height: 200px;
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+}
+.location{
+  display: flex;
+  p{
+    font-size: 24px;
+    margin: 0 0 0 3px;
+  }
+  svg{
+    width: 24px;
+    height: 24px;
+  }
+}
+.description{
+  margin: 0;
+}
+@keyframes rotateCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loading{
+  width: 50px;
+  height: 50px;
+  animation: rotateCircle 3s infinite linear;
+}
+.rating{
+  color: #f7ff03;
+}

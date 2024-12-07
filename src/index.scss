@@ -1,0 +1,10 @@
+@use './scss/variables' as *;
+body {
+  margin: 0;
+  background: url("./assets/mainBG.jpg") fixed;
+}
+html {
+  @include custom-scrollbar;
+  overflow-y: scroll;
+
+}

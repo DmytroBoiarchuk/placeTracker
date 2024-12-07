@@ -1,34 +1,49 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { searchRequest } from "../../../../Functions/searchRequest.ts";
+import { searchRequest } from "../../../../Functions/requests/searchRequest.ts";
 import SelectCity from "../SelectCity/SelectCity.tsx";
 import classes from "./Search.module.scss";
 import MediumButton from "../../../Buttons/MediumButton.tsx";
+import { CacheKeyContext } from "../../../../store/cacheKeyContext.tsx";
+import { SearchResultInterface } from "../../../../interfaces/interfaces.ts";
 
 const Search = () => {
+  const [coordinates, setCoordinates] = useState<{ lat: string; lng: string }>({
+    lat: "",
+    lng: "",
+  });
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [isCashed, setIsCashed] = useState<boolean>(false);
+  const cacheCtx = useContext(CacheKeyContext);
   const searchRef = useRef<HTMLInputElement>(null);
-  const location = { lat: 40.7128, lon: -74.006 };
   function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
-    if (searchRef.current) setSearchTerm(searchRef.current?.value);
+    if (searchRef.current) {
+      setSearchTerm(searchRef.current?.value.toLowerCase());
+      setIsCashed(false);
+    }
   }
-  const { data } = useQuery({
-    queryKey: ["search", searchTerm, location],
-    queryFn: () => searchRequest(searchRef.current?.value, location),
+
+  const { data } = useQuery<SearchResultInterface>({
+    queryKey: ["search", searchTerm, coordinates],
+    queryFn: () => searchRequest(searchRef.current?.value, coordinates),
     staleTime: Infinity,
     gcTime: 10 * 60 * 1000,
     enabled: searchTerm !== "",
   });
-  if (data) {
-    console.log(data);
-  }
+  useEffect(() => {
+    if (data && searchTerm && !isCashed) {
+      cacheCtx.addCache(searchTerm, coordinates);
+      setIsCashed(true);
+    }
+  }, [data, searchTerm, coordinates, cacheCtx, isCashed, setIsCashed]);
+
   return (
     <div className={classes.searchContainer}>
       <form onSubmit={handleSubmit}>
-          <input type="search" placeholder="Search places" ref={searchRef} />{" "}
-          <SelectCity />
-          <MediumButton type="submit">Search</MediumButton>
+        <input type="search" placeholder="Search places" ref={searchRef} />
+        <SelectCity setCoordinates={setCoordinates} />
+        <MediumButton type="submit">Search</MediumButton>
       </form>
     </div>
   );

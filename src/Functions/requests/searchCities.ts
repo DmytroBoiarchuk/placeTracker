@@ -1,4 +1,4 @@
-import { City } from "../interfaces/interfaces.ts";
+import { City } from "../../interfaces/interfaces.ts";
 
 export const searchCities = async () => {
   try {

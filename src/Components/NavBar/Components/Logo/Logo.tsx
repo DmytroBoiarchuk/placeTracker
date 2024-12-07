@@ -1,12 +1,13 @@
 import classes from "./Logo.module.scss";
 import logo from "../../../../assets/logo.svg";
+import {Link} from "react-router";
 
 const Logo = () => {
     return (
-        <div className={classes.logo}>
+        <Link to={'/'} className={classes.logo}>
             <img src={logo} alt="logo"/>
             <h1>Place Tracker</h1>
-        </div>
+        </Link>
     );
 };
 

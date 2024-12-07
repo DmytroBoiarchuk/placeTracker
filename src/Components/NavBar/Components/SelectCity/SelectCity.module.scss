@@ -12,10 +12,12 @@
 .selectCity {
   position: relative;
   ul {
+    z-index: 1;
     @include custom-scrollbar;
     max-height: 45vh;
     overflow: auto;
-    width: 100%;
+    width: 96%;
+    left: 5px;
     margin: 0;
     padding: 0;
     position: absolute;

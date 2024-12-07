@@ -1,6 +1,8 @@
 $primary-color-background:linear-gradient(to right, #26836e, #246780);
 $button-color: #0dafaf;
 $button-color-hover: #00ffc4;
+$places-card-bg: linear-gradient(to right, #44ba5e, #82d19c);
+$box-shadow: -2px 2px 2px #000000;
 
 @mixin custom-scrollbar {
   &::-webkit-scrollbar {
@@ -24,5 +26,21 @@ $button-color-hover: #00ffc4;
 
   &::-webkit-scrollbar-thumb:hover {
     background-color: #555;
+  }
+}
+@keyframes changeBgColor {
+  0% {
+    background-color: $button-color;
+  }
+  100% {
+    background-color: $button-color-hover;
+  }
+}
+@keyframes revertBgColor {
+  0% {
+    background-color: $button-color-hover;
+  }
+  100% {
+    background-color: $button-color;
   }
 }
