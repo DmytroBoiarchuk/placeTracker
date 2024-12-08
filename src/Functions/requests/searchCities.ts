@@ -1,9 +1,11 @@
 import { City } from "../../interfaces/interfaces.ts";
 
+const apiUrl = "https://thingproxy.freeboard.io/fetch/http://api.geonames.org/searchJSON?formatted=true&cities=cities15000&maxRows=1000&username=dmytroboiarchuk";
+
 export const searchCities = async () => {
   try {
     const response = await fetch(
-      "https://api.geonames.org/searchJSON?formatted=true&cities=cities15000&maxRows=1000&username=dmytroboiarchuk",
+        apiUrl,
     );
     if (!response.ok) {
       throw new Error(response.statusText);
