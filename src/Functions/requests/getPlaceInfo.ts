@@ -4,7 +4,7 @@ export async function getPlaceInfo (fsq_id: string) {
     //https://api.foursquare.com/v3/places/${fsq_id}?fields=fsq_id,categories,description,photos
     try {
         const response = await fetch(
-            `https://api.foursquare.com/v3/places/${fsq_id}?fields=fsq_id,categories,description,photos,rating`,{
+            `https://api.foursquare.com/v3/places/${fsq_id}?fields=fsq_id,categories,description,photos,rating,tips,name,location`,{
             method: "GET",
             headers: { Authorization: apiKey, "Accept-Language": "en" },
     }

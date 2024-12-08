@@ -7,7 +7,7 @@ export async function searchRequest(
   try {
     if (!query) return;
     const response = await fetch(
-      `https://api.foursquare.com/v3/places/search?query=${query}&ll=${coordinates.lat},${coordinates.lng}&radius=${20000}&fields=fsq_id,name,location,rating,geocodes,link`,
+      `https://api.foursquare.com/v3/places/search?query=${query}&ll=${coordinates.lat},${coordinates.lng}&radius=${20000}&fields=fsq_id,location,rating`,
       {
         method: "GET",
         headers: { Authorization: apiKey, "Accept-Language": "en" },

@@ -14,13 +14,17 @@ const PlacesList = (): JSX.Element => {
       cacheKeyCtx.searchTerm,
       cacheKeyCtx.coordinates,
     ]);
+    console.log(cachedData)
   return (
     <ul className={classes.list}>
-      {cachedData?.results.sort((a, b) => b.rating - a.rating ).map((place) => (
-        <li key={place.fsq_id}>
-          <PlaceCard place={place} />
-        </li>
-      ))}
+      {cachedData?.results
+        .sort((a, b) => b.rating - a.rating)
+        .filter((p) =>  p.location.formatted_address !== undefined && p.location.address !== undefined)
+        .map((place) => (
+          <li key={place.fsq_id}>
+            <PlaceCard fsq_id={place.fsq_id} />
+          </li>
+        ))}
     </ul>
   );
 };

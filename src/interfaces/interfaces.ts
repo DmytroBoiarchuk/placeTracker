@@ -41,11 +41,6 @@ export interface City {
 
 export interface PlaceInterface {
   fsq_id: string;
-  geocodes: {
-    main: { latitude: number; longitude: number };
-    roof: { latitude: number; longitude: number };
-  };
-  link: string;
   location: {
     address: string;
     admin_region: string;
@@ -56,11 +51,11 @@ export interface PlaceInterface {
     postcode: string;
     region: string;
   };
-  name: string;
   rating:number;
 }
-export interface DemoPlaceDataInterface {
+export interface PlaceDataInterface {
   fsq_id: string,
+  name: string,
   categories:
     {
       id: number,
@@ -84,4 +79,18 @@ export interface DemoPlaceDataInterface {
       classifications: string[]
     }[],
   rating: number | undefined,
+  tips: {
+    created_at: string,
+    text:string,
+  }[],
+  location: {
+    address: string;
+    admin_region: string;
+    country: string;
+    formatted_address: string;
+    locality: string;
+    post_town: string;
+    postcode: string;
+    region: string;
+  };
 }

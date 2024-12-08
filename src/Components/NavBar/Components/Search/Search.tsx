@@ -6,8 +6,11 @@ import classes from "./Search.module.scss";
 import MediumButton from "../../../Buttons/MediumButton.tsx";
 import { CacheKeyContext } from "../../../../store/cacheKeyContext.tsx";
 import { SearchResultInterface } from "../../../../interfaces/interfaces.ts";
+import { useNavigate } from "react-router";
 
 const Search = () => {
+  const navigate = useNavigate();
+
   const [coordinates, setCoordinates] = useState<{ lat: string; lng: string }>({
     lat: "",
     lng: "",
@@ -24,13 +27,18 @@ const Search = () => {
     }
   }
 
-  const { data } = useQuery<SearchResultInterface>({
+  const { data, isPending } = useQuery<SearchResultInterface>({
     queryKey: ["search", searchTerm, coordinates],
     queryFn: () => searchRequest(searchRef.current?.value, coordinates),
     staleTime: Infinity,
     gcTime: 10 * 60 * 1000,
     enabled: searchTerm !== "",
   });
+  useEffect(() => {
+    if (!isPending) {
+      navigate("/");
+    }
+  }, [isPending, navigate]);
   useEffect(() => {
     if (data && searchTerm && !isCashed) {
       cacheCtx.addCache(searchTerm, coordinates);

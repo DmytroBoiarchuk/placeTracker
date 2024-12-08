@@ -1,73 +1,94 @@
 @use "../../../../scss/variables" as *;
-.cardInPending{
+.cardInPending {
   justify-content: center;
   align-items: center;
 }
-.card{
+.cardExpanded {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  width: 1000px;
+}
+.card {
+  z-index: 1;
   min-height: 230px;
   position: relative;
   display: flex;
-  width: 1000px;
+
   background: $places-card-bg;
-  margin: 5px;
-  border-radius: 10px;
   box-shadow: $box-shadow;
+
+  border-radius: 10px;
+
+  svg {
+    margin: 10px;
+    color: white;
+  }
+  button {
+    svg {
+      color: black;
+    }
+  }
 }
-.savedSign{
+.savedSign {
   cursor: pointer;
   position: absolute;
   right: 20px;
   top: 10px;
   border: 0;
   background-color: rgba(255, 255, 255, 0);
-  svg{
+  svg {
     width: 20px;
     height: 20px;
   }
 }
-.infoWrapper{
+.infoWrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 15px;
-  h1{
+
+  h1 {
     font-size: 26px;
     margin: 0;
   }
-  p{
+  p {
     font-size: 24px;
     font-family: "Eras Light ITC", serif;
     font-style: italic;
   }
 }
-.icon{
+.icon {
   width: 64px;
   height: 64px;
 }
 
-.photoContainer{
+.photoContainer {
+  flex: none;
   padding: 10px;
-  max-width: 200px;
-  max-height: 200px;
-  img{
+  width: 200px;
+  height: 200px;
+  img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 20px;
+    user-select: none;
   }
 }
-.location{
+.location {
   display: flex;
-  p{
+  p {
     font-size: 24px;
     margin: 0 0 0 3px;
+    align-content: center;
   }
-  svg{
+  svg {
     width: 24px;
     height: 24px;
   }
 }
-.description{
+.description {
   margin: 0;
 }
 @keyframes rotateCircle {
@@ -78,11 +99,19 @@
     transform: rotate(360deg);
   }
 }
-.loading{
+.loading {
   width: 50px;
   height: 50px;
   animation: rotateCircle 3s infinite linear;
 }
-.rating{
+.rating {
   color: #f7ff03;
+}
+.showTipsButton {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  border: 0;
+  border-radius: 0 0 10px 10px;
+  background: #b9c8bf;
 }
