@@ -3,7 +3,7 @@ import { City } from "../../interfaces/interfaces.ts";
 export const searchCities = async () => {
   try {
     const response = await fetch(
-      "http://api.geonames.org/searchJSON?formatted=true&cities=cities15000&maxRows=1000&username=dmytroboiarchuk",
+      "https://api.geonames.org/searchJSON?formatted=true&cities=cities15000&maxRows=1000&username=dmytroboiarchuk",
     );
     if (!response.ok) {
       throw new Error(response.statusText);
