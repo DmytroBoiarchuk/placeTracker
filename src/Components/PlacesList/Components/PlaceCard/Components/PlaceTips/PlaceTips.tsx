@@ -20,7 +20,7 @@ const PlaceTips = ({
       className={classes.tips}
     >
       {tips?.map((tip) => (
-        <div className={classes.tipBox}>
+        <div key={tip.text} className={classes.tipBox}>
           <p className={classes.tipDate}>
             {format(new Date(tip.created_at), "dd.MM.yyyy HH:mm")}
           </p>

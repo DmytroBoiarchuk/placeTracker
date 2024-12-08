@@ -41,9 +41,6 @@ const PlaceCard = ({ fsq_id }: { fsq_id: string }): JSX.Element => {
     gcTime: 10 * 60 * 1000,
   });
 
-  if (data) {
-    console.log(data);
-  }
   return (
     <div className={classes.cardExpanded}>
       <div

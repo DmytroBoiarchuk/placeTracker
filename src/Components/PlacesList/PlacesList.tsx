@@ -14,7 +14,6 @@ const PlacesList = (): JSX.Element => {
       cacheKeyCtx.searchTerm,
       cacheKeyCtx.coordinates,
     ]);
-    console.log(cachedData)
   return (
     <ul className={classes.list}>
       {cachedData?.results
