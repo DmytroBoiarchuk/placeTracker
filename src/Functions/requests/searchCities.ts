@@ -1,6 +1,6 @@
 import { City } from "../../interfaces/interfaces.ts";
 
-const apiUrl = "https://allorigins.win/fetch/http://api.geonames.org/searchJSON?formatted=true&cities=cities15000&maxRows=1000&username=dmytroboiarchuk";
+const apiUrl = "https://secure.geonames.org/searchJSON?formatted=true&cities=cities15000&maxRows=1000&username=dmytroboiarchuk";
 
 export const searchCities = async () => {
   try {
