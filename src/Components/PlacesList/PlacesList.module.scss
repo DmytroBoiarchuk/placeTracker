@@ -1,5 +1,10 @@
 @use "../../scss/variables" as *;
+.listSection{
+  overflow: auto;
+  @include custom-scrollbar;
+  height: calc(100vh - $nav-bar-height);
 
+}
 .list {
   position: relative;
   margin: 0;

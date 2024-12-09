@@ -1,4 +1,3 @@
-import "./App.scss";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import PlacesList from "./Components/PlacesList/PlacesList.tsx";
 import CacheKeyContextProvider from "./store/cacheKeyContext.tsx";

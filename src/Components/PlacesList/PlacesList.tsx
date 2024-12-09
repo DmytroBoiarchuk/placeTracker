@@ -14,7 +14,7 @@ const PlacesList = (): JSX.Element => {
     cacheKeyCtx.coordinates,
   ]);
   return (
-    <>
+    <section className={classes.listSection}>
       {!cachedData && (
         <div className={classes.greetingsText}>
           <h1>Welcome!</h1>
@@ -37,7 +37,7 @@ const PlacesList = (): JSX.Element => {
             ))}
         </ul>
       )}
-    </>
+    </section>
   );
 };
 

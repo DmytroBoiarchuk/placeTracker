@@ -7,7 +7,7 @@ const WishList = () => {
   const storedArray = useContext(WishListContext).storedArray;
 
   return (
-    <>
+    <section className={classes.listSection}>
       {storedArray.length === 0 && <h1 className={classes.noAddedYet}>No cities added yet :(</h1>}
       {storedArray.length !== 0 && (
         <ul className={classes.list}>
@@ -18,7 +18,7 @@ const WishList = () => {
           ))}
         </ul>
       )}
-    </>
+    </section>
   );
 };
 

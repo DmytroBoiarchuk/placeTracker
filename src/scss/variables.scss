@@ -3,7 +3,7 @@ $button-color: #0dafaf;
 $button-color-hover: #00ffc4;
 $places-card-bg: linear-gradient(to right, #44ba5e, #82d19c);
 $box-shadow: -2px 2px 2px #000000;
-
+$nav-bar-height: 110px;
 @mixin custom-scrollbar {
   &::-webkit-scrollbar {
     width: 10px;

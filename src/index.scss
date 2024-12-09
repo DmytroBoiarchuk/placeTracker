@@ -4,7 +4,7 @@ body {
   background: url("./assets/mainBG.jpg") fixed;
 }
 html {
-  @include custom-scrollbar;
-  overflow-y: scroll;
-
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
