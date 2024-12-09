@@ -1,5 +1,5 @@
 import classes from "./Logo.module.scss";
-import logo from "../../../../assets/logo.svg";
+import logo from "../../../../../public/logo.svg";
 import {Link} from "react-router";
 
 const Logo = () => {
