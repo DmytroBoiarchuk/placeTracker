@@ -11,6 +11,7 @@ const PlaceTips = ({
 }) => {
   return (
     <motion.div
+      initial={{ display: "none", opacity: 0, y: -200 }}
       animate={
         isTipsShown
           ? { display: "flex", opacity: 1, y: 0 }

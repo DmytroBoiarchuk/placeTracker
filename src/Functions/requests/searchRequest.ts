@@ -14,10 +14,13 @@ export async function searchRequest(
       },
     );
     if (!response.ok) {
-      throw new Error(response.statusText);
+      const errorData = await response.json();
+      console.log(errorData)
+      throw new Error(`Error with status: ${response.status.toString()}. Reason: ${errorData.message}`);
     }
     return await response.json();
   } catch (e) {
-    console.log(e);
+    console.error("Error occurred:", e);
+    throw e
   }
 }

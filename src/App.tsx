@@ -5,7 +5,7 @@ import CacheKeyContextProvider from "./store/cacheKeyContext.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./Components/RootLayout/RootLayout.tsx";
 import WishList from "./Components/WishList/WishList.tsx";
-
+import { WishListContextProvider} from "./store/wishListContext.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,7 +22,9 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <CacheKeyContextProvider>
-        <RouterProvider router={router} />
+        <WishListContextProvider>
+          <RouterProvider router={router} />
+        </WishListContextProvider>
       </CacheKeyContextProvider>
     </QueryClientProvider>
   );

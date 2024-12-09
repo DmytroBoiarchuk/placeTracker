@@ -69,20 +69,25 @@ const Gallery = ({ alt, data }: { alt: string; data: PlaceDataInterface }) => {
             alt={`Photo ${currentIndex + 1}`}
           />
         </div>
-        <button
-          className={classes.prevButton}
-          disabled={data.photos.length <= 1}
-          onClick={prevPhoto}
-        >
-          <GrPrevious color="#bfbbbb" size="45px" />
-        </button>
-        <button
-          className={classes.nextButton}
-          disabled={data.photos.length <= 1}
-          onClick={nextPhoto}
-        >
-          <GrNext color="#bfbbbb" size="45px" />
-        </button>
+        {data.photos.length > 1 && (
+          <>
+            {" "}
+            <button
+              className={classes.prevButton}
+              disabled={data.photos.length <= 1}
+              onClick={prevPhoto}
+            >
+              <GrPrevious color="#bfbbbb" size="45px" />
+            </button>
+            <button
+              className={classes.nextButton}
+              disabled={data.photos.length <= 1}
+              onClick={nextPhoto}
+            >
+              <GrNext color="#bfbbbb" size="45px" />
+            </button>
+          </>
+        )}
       </dialog>
     </>
   );

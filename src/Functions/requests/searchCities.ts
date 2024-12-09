@@ -8,14 +8,16 @@ export const searchCities = async () => {
         apiUrl,
     );
     if (!response.ok) {
-      throw new Error(response.statusText);
+      const errorData = await response.json();
+      throw new Error(`Error with status: ${response.status.toString()}. Reason: ${errorData.status.message}`);
     }
     const data = await response.json();
     //filter off small cities
     return await data.geonames.filter(
       (city: City) => city.population >= 100000,
     );
-  } catch (error) {
-    console.error("City search error:", error);
+  } catch (e) {
+    console.error("Error occurred:", e);
+    throw e
   }
 };
