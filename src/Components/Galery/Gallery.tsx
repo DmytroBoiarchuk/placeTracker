@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import classes from "./Gallery.module.scss";
 import noImageYet from "../../assets/products_noimageyet.jpg";
 import { PlaceDataInterface } from "../../interfaces/interfaces.ts";
@@ -10,6 +10,7 @@ const Gallery = ({ alt, data }: { alt: string; data: PlaceDataInterface }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const openDialog = () => {
+    //set on first photo
     setCurrentIndex(0);
     dialogRef.current?.showModal();
     //lock page scrolling
@@ -26,16 +27,19 @@ const Gallery = ({ alt, data }: { alt: string; data: PlaceDataInterface }) => {
 
   const nextPhoto = () => {
     setCurrentIndex((prevIndex) =>
+        //if current photo is last in the array - reset next photo on first in the array
       prevIndex === data.photos.length - 1 ? 0 : prevIndex + 1,
     );
   };
 
   const prevPhoto = () => {
+        //if current photo is first in the array - reset prev photo to last in the array
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? data.photos.length - 1 : prevIndex - 1,
     );
   };
 
+  //close gallery if user clicks outside the dialog
   const handleClickOverlay = (e: React.MouseEvent<HTMLDialogElement>) => {
     if (e.target === e.currentTarget) {
       closeDialog();

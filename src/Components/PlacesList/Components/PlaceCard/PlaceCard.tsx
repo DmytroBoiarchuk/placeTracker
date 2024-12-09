@@ -28,7 +28,7 @@ const PlaceCard = ({ fsq_id }: { fsq_id: string }): JSX.Element => {
   function showTipsHandler() {
     setIsTipsShown((prevState) => !prevState);
   }
-  //save to localStorage
+  //save to localStorage /through the context, to update list of saved places after deleting them
   function onSaveHandler(save: boolean) {
     if (save) wishListCtx.setPlace(fsq_id);
     else wishListCtx.removePlace(fsq_id);

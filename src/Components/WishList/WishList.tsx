@@ -4,6 +4,7 @@ import {useContext} from "react";
 import {WishListContext} from "../../store/wishListContext.tsx";
 
 const WishList = () => {
+  //array of cards(places) stored in local storage
   const storedArray = useContext(WishListContext).storedArray;
 
   return (

@@ -8,6 +8,8 @@ import PlaceCard from "./Components/PlaceCard/PlaceCard.tsx";
 const PlacesList = (): JSX.Element => {
   const queryClient = useQueryClient();
   const cacheKeyCtx = useContext(CacheKeyContext);
+
+  //retrieve query result from cache using keys we got from Context
   const cachedData: SearchResultInterface | undefined = queryClient.getQueryData([
     "search",
     cacheKeyCtx.searchTerm,

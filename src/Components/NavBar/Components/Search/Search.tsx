@@ -11,17 +11,24 @@ import loadingSpinner from "../../../../assets/spinner-loading-dots.svg";
 import Error from "../../../Error/Error.tsx";
 const Search = () => {
   const navigate = useNavigate();
-
+  //city coordinates to fetch
   const [coordinates, setCoordinates] = useState<{ lat: string; lng: string }>({
     lat: "",
     lng: "",
   });
-  const isCoordinatesValid =  coordinates.lat !== "" &&
-      coordinates.lng !== ""
+
+  //check if coordinates valid for fetching
+  const isCoordinatesValid = coordinates.lat !== "" && coordinates.lng !== "";
+  //search keyword to fetch
   const [searchTerm, setSearchTerm] = useState<string>("");
+  //flag when fetching new query (to prevent infinitive loop)
   const [isCashed, setIsCashed] = useState<boolean>(false);
+  //passing cache keys to Context to then retrieve them in result list section
   const cacheCtx = useContext(CacheKeyContext);
+  //uncontrolled input ref
   const searchRef = useRef<HTMLInputElement>(null);
+
+  // fetch query
   const { data, isLoading, isError, error } = useQuery<SearchResultInterface>({
     queryKey: ["search", searchTerm, coordinates],
     queryFn: () => searchRequest(searchRef.current?.value, coordinates),
@@ -30,16 +37,13 @@ const Search = () => {
     enabled: searchTerm !== "" && isCoordinatesValid,
     retry: false,
   });
-  if (isError) {
-    console.log(error);
-  }
+  //on submit form
   function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
     if (
       searchRef.current &&
       searchRef.current.value !== "" &&
-      coordinates.lat !== "" &&
-      coordinates.lng !== ""
+      isCoordinatesValid
     ) {
       // check if inputs is not empty
       setSearchTerm(searchRef.current?.value.toLowerCase());
@@ -47,6 +51,7 @@ const Search = () => {
       navigate("/");
     }
   }
+  //once result is received - update context with it
   useEffect(() => {
     if (data && searchTerm && !isCashed) {
       cacheCtx.addCache(searchTerm, coordinates);

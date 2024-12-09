@@ -12,8 +12,11 @@ const SelectCity = ({
     React.SetStateAction<{ lat: string; lng: string }>
   >;
 }) => {
-  const [listIsShown, setListIsShown] = useState<boolean>(false);
+  //flag when to show the list of matched cities
+  const [cityListIsShown, setCityListIsShown] = useState<boolean>(false);
+  //controlled input
   const [inputValue, setInputValue] = useState<string>("");
+  //list of matched city
   const [cityMatches, setCityMatches] = useState<City[]>([]);
   //request cities list for City selector from geonames API
   const { data, error, isError } = useQuery<City[]>({
@@ -35,8 +38,8 @@ const SelectCity = ({
     setCityMatches([]);
   }
   //toggle list appearance
-  function toggleListIsShown(isShown: boolean) {
-    setListIsShown(isShown);
+  function toggleCityListIsShown(isShown: boolean) {
+    setCityListIsShown(isShown);
   }
   //show possible options of cities when user write in input
   function onChangeHandler(event: ChangeEvent<HTMLInputElement>): void {
@@ -45,6 +48,7 @@ const SelectCity = ({
       (city: City) =>
         city.name.toLowerCase() === event.target.value.toLowerCase(),
     );
+    // if input matches some city in cities` database - set its coordinates before user chose from the matched list
     if (prefilteredCities && prefilteredCities.length > 0) {
       setCoordinates({
         lat: prefilteredCities[0].lat,
@@ -60,6 +64,7 @@ const SelectCity = ({
           city.name.toLowerCase().startsWith(tappedValue.toLowerCase()),
         ),
       );
+    //clear matched cities if input is empty
     if (tappedValue === "") {
       setCityMatches([]);
       setCoordinates({ lat: "", lng: "" });
@@ -70,13 +75,13 @@ const SelectCity = ({
       <div className={classes.selectCity}>
         <input
           type="search"
-          onFocus={() => toggleListIsShown(true)}
-          onBlur={() => toggleListIsShown(false)}
+          onFocus={() => toggleCityListIsShown(true)}
+          onBlur={() => toggleCityListIsShown(false)}
           placeholder="ex: London"
           value={inputValue}
           onChange={(e) => onChangeHandler(e)}
         />
-        {listIsShown && (
+        {cityListIsShown && (
           <ul>
             {cityMatches.map((city: City) => (
               <li

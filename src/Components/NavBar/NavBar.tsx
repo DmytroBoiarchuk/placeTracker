@@ -7,14 +7,14 @@ import { motion } from "motion/react";
 
 const NavBar = (): JSX.Element => {
   const location = useLocation();
+
+  //is "/wishlist" current path? to show different stiles and animate them
   const isWishlist = location.pathname === "/wishlist";
 
   return (
     <motion.div
       animate={
-        isWishlist
-          ? { background: "#7fb9cf" }
-          : { background: "#246780" }
+        isWishlist ? { background: "#7fb9cf" } : { background: "#246780" }
       }
       transition={{ duration: 1 }}
       className={classes.navBarContainer}
