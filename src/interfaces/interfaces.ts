@@ -1,4 +1,3 @@
-
 export interface CacheContextReadOnlyInterface {
   searchTerm: string;
   coordinates: { lat: string; lng: string };
@@ -13,11 +12,11 @@ export interface SearchResultInterface {
         center: {
           latitude: number;
           longitude: number;
-        },
-        radius: number
-      }
-    }
-  }
+        };
+        radius: number;
+      };
+    };
+  };
   results: PlaceInterface[];
 }
 export interface City {
@@ -51,38 +50,38 @@ export interface PlaceInterface {
     postcode: string;
     region: string;
   };
-  rating:number;
+  rating: number;
 }
+export interface PhotosArrayInterface {
+  id: string;
+  created_at: string;
+  prefix: string;
+  suffix: string;
+  width: number;
+  height: number;
+  classifications: string[] | undefined;
+}
+
 export interface PlaceDataInterface {
-  fsq_id: string,
-  name: string,
-  categories:
-    {
-      id: number,
-      name: string,
-      short_name: string,
-      plural_name: string,
-      icon: {
-        prefix: string,
-        suffix: string
-      }
-    }[],
-  description: string | undefined,
-  photos:
-    {
-      id: string,
-      created_at: string,
-      prefix: string,
-      suffix: string,
-      width: number,
-      height: number
-      classifications: string[]
-    }[],
-  rating: number | undefined,
+  fsq_id: string;
+  name: string;
+  categories: {
+    id: number;
+    name: string;
+    short_name: string;
+    plural_name: string;
+    icon: {
+      prefix: string;
+      suffix: string;
+    };
+  }[];
+  description: string | undefined;
+  photos: PhotosArrayInterface[];
+  rating: number | undefined;
   tips: {
-    created_at: string,
-    text:string,
-  }[],
+    created_at: string;
+    text: string;
+  }[];
   location: {
     address: string;
     admin_region: string;

@@ -11,6 +11,7 @@ const PlaceTips = ({
 }) => {
   return (
     <motion.div
+      data-testid="place-tips"
       initial={{ display: "none", opacity: 0, y: -200 }}
       animate={
         isTipsShown

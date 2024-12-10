@@ -1,5 +1,4 @@
 import classes from "./Error.module.scss";
-import { IoCloseSharp } from "react-icons/io5";
 import { useState } from "react";
 
 const Error = ({ error }: { error: Error }): JSX.Element => {
@@ -11,7 +10,6 @@ const Error = ({ error }: { error: Error }): JSX.Element => {
         <p>{error.message}</p>
         <button onClick={() => setIsOpen(false)}>
           Close
-          <IoCloseSharp />
         </button>
       </div>
     </dialog>

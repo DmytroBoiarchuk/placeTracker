@@ -3,7 +3,7 @@
   overflow: auto;
   @include custom-scrollbar;
   height: calc(100vh - $nav-bar-height);
-
+  scrollbar-gutter: stable;
 }
 .list {
   position: relative;
