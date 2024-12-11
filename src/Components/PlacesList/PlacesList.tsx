@@ -23,7 +23,7 @@ const PlacesList = (): JSX.Element => {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.2, // Задержка для каждого элемента
+        delay: i * 0.2,
         duration: 0.5,
       },
     }),
