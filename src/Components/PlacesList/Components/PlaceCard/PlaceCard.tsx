@@ -26,11 +26,11 @@ const PlaceCard = ({ fsq_id }: { fsq_id: string }): JSX.Element => {
     const [isSaved, setIsSaved] = useState<boolean>(wasSaved);
     //toggle tips
     const [isTipsShown, setIsTipsShown] = useState<boolean>(false);
-    function showTipsHandler() {
+    function showTipsHandler():void {
         setIsTipsShown((prevState) => !prevState);
     }
     //save to localStorage /through the context, to update list of saved places after deleting them
-    function onSaveHandler(save: boolean) {
+    function onSaveHandler(save: boolean):void {
         if (save) wishListCtx.setPlace(fsq_id);
         else wishListCtx.removePlace(fsq_id);
         setIsSaved(save);
@@ -96,6 +96,7 @@ const PlaceCard = ({ fsq_id }: { fsq_id: string }): JSX.Element => {
                     )}
                     {!isPending && !isSaved && (
                         <button
+                            data-testid='save'
                             onClick={() => onSaveHandler(true)}
                             className={classes.savedSign}
                         >
@@ -104,6 +105,7 @@ const PlaceCard = ({ fsq_id }: { fsq_id: string }): JSX.Element => {
                     )}
                     {!isPending && isSaved && (
                         <button
+                            data-testid='saved'
                             onClick={() => onSaveHandler(false)}
                             className={classes.savedSign}
                         >

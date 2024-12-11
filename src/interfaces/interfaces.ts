@@ -5,6 +5,11 @@ export interface CacheContextReadOnlyInterface {
 export interface CacheContextInterface extends CacheContextReadOnlyInterface {
   addCache: (term: string, coords: { lat: string; lng: string }) => void;
 }
+export interface WishListContextInterface {
+  storedArray: string[];
+  setPlace: (fsq_id: string) => void;
+  removePlace: (fsq_id: string) => void;
+}
 export interface SearchResultInterface {
   context: {
     geo_bounds: {

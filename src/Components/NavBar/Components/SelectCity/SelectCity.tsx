@@ -11,7 +11,7 @@ const SelectCity = ({
   setCoordinates: React.Dispatch<
     React.SetStateAction<{ lat: string; lng: string }>
   >;
-}) => {
+}):JSX.Element => {
   //flag when to show the list of matched cities
   const [cityListIsShown, setCityListIsShown] = useState<boolean>(false);
   //controlled input

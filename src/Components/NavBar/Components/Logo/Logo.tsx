@@ -2,7 +2,7 @@ import classes from "./Logo.module.scss";
 import logo from "../../../../../public/logo.svg";
 import {Link} from "react-router";
 
-const Logo = () => {
+const Logo = ():JSX.Element => {
     return (
         <Link to={'/'} className={classes.logo}>
             <img src={logo} alt="logo"/>

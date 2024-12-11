@@ -8,7 +8,7 @@ const PlaceTips = ({
 }: {
   tips: { created_at: string; text: string }[] | undefined;
   isTipsShown: boolean;
-}) => {
+}):JSX.Element => {
   return (
     <motion.div
       data-testid="place-tips"

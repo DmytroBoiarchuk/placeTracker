@@ -3,9 +3,9 @@ import classes from "./WishList.module.scss";
 import {useContext} from "react";
 import {WishListContext} from "../../store/wishListContext.tsx";
 
-const WishList = () => {
+const WishList = ():JSX.Element => {
   //array of cards(places) stored in local storage
-  const storedArray = useContext(WishListContext).storedArray;
+  const storedArray:string[] = useContext(WishListContext).storedArray;
 
   return (
     <section className={classes.listSection}>
@@ -13,7 +13,7 @@ const WishList = () => {
       {storedArray.length !== 0 && (
         <ul className={classes.list}>
           {storedArray.map((placeId: string) => (
-            <li key={placeId}>
+            <li data-testid='Place Card' key={placeId}>
               <PlaceCard fsq_id={placeId} />
             </li>
           ))}

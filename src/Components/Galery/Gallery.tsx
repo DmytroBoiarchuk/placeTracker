@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState} from "react";
 import classes from "./Gallery.module.scss";
 import noImageYet from "../../assets/products_noimageyet.jpg";
 import { PhotosArrayInterface } from "../../interfaces/interfaces.ts";
@@ -10,12 +10,12 @@ const Gallery = ({
 }: {
   alt: string;
   photos: PhotosArrayInterface[];
-}) => {
+}):JSX.Element => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const dialogRef= useRef<HTMLDialogElement>(null);
 
-  const openDialog = () => {
+  const openDialog = ():void => {
     //set on first photo
     setCurrentIndex(0);
     dialogRef.current?.showModal();
@@ -24,21 +24,21 @@ const Gallery = ({
     document.body.style.overflow = "hidden";
   };
 
-  const closeDialog = () => {
+  const closeDialog = ():void => {
     dialogRef.current?.close();
     //unlock page scrolling
     document.body.style.height = "auto";
     document.body.style.overflow = "";
   };
 
-  const nextPhoto = () => {
+  const nextPhoto = ():void => {
     setCurrentIndex((prevIndex) =>
       //if current photo is last in the array - reset next photo on first in the array
       prevIndex === photos.length - 1 ? 0 : prevIndex + 1,
     );
   };
 
-  const prevPhoto = () => {
+  const prevPhoto = ():void => {
     //if current photo is first in the array - reset prev photo to last in the array
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? photos.length - 1 : prevIndex - 1,

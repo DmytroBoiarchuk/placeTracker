@@ -1,4 +1,5 @@
-const apiKey = import.meta.env.VITE_FOURSQUARE_API_KEY;
+import {VITE_FOURSQUARE_API_KEY} from '../../constants/constants.ts'
+const apiKey = VITE_FOURSQUARE_API_KEY;
 
 export async function searchRequest(
   query: string | undefined,

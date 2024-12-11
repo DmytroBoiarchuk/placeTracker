@@ -1,10 +1,11 @@
 import React, { createContext, useState } from "react";
+import { WishListContextInterface } from "../interfaces/interfaces.ts";
 
-export const WishListContext = createContext<{
-  storedArray: string[];
-  setPlace: (fsq_id: string) => void;
-  removePlace: (fsq_id: string) => void;
-}>({ storedArray: [], setPlace: () => {}, removePlace: () => {} });
+export const WishListContext = createContext<WishListContextInterface>({
+  storedArray: [],
+  setPlace: () => {},
+  removePlace: () => {},
+});
 
 export const WishListContextProvider = ({
   children,
@@ -22,7 +23,9 @@ export const WishListContextProvider = ({
   };
 
   const removePlace = (fsq_id: string) => {
-    const newData = storedArray.filter((storedPlaceId: string) => storedPlaceId !== fsq_id)
+    const newData = storedArray.filter(
+      (storedPlaceId: string) => storedPlaceId !== fsq_id,
+    );
     localStorage.setItem("savedPlaces", JSON.stringify(newData));
     setStoredArray(newData);
   };

@@ -1,7 +1,5 @@
 import {VITE_FOURSQUARE_API_KEY} from '../../constants/constants.ts'
 
-
-
 const apiKey = VITE_FOURSQUARE_API_KEY;
 
 export async function getPlaceInfo(fsq_id: string) {
