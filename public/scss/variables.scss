@@ -1,0 +1,53 @@
+$primary-color-background:#246780;
+$button-color: #0dafaf;
+$button-color-hover: #00ffc4;
+$places-card-bg: linear-gradient(to right, #607167, #0b5a77);
+$box-shadow: -2px 2px 2px #000000;
+$nav-bar-height: 110px;
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border: 2px solid #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #7fb9cf;
+  }
+
+  &::-webkit-scrollbar-track:hover {
+    background-color: #7fb9cf;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #7fb9cf;
+  }
+}
+@keyframes rotateCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes changeBgColor {
+  0% {
+    background-color: $button-color;
+  }
+  100% {
+    background-color: $button-color-hover;
+  }
+}
+@keyframes revertBgColor {
+  0% {
+    background-color: $button-color-hover;
+  }
+  100% {
+    background-color: $button-color;
+  }
+}

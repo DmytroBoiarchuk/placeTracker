@@ -1,0 +1,29 @@
+@use '../../../../../../../public/scss/variables' as *;
+
+.tips{
+  overflow: auto;
+  @include custom-scrollbar;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: $places-card-bg;
+  border-radius: 0 0 10px 10px;
+  z-index: 0;
+}
+.tipBox{
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  background-color: #c0dcc0;
+  margin: 10px 10px 10px 10px;
+  width: auto;
+}
+.tipDate{
+  margin: 0;
+  font-style: italic;
+  padding: 3px;
+}
+.tipText{
+  margin: 0;
+ padding: 5px 0 5px 15px;
+}

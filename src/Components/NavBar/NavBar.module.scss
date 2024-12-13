@@ -1,10 +1,35 @@
-@use "../../scss/variables" as *;
+@use "../../../public/scss/variables" as *;
 .navBarContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 110px;
-  width: 100%;
+  height: $nav-bar-height;
   background: $primary-color-background;
 }
 
+.savedButton{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5px;
+  border: 0;
+  border-radius: 6px ;
+  box-shadow: $box-shadow;
+  text-decoration: none;
+  width: 50px;
+  height: 50px;
+  margin: 20px;
+  background-color: $button-color;
+  color: #020000;
+  &:hover{
+    background-color: $button-color-hover ;
+    animation: changeBgColor 0.6s ease normal;
+  }
+  &:not(:hover) {
+    animation: revertBgColor 0.6s ease normal;
+  }
+  p{
+    margin: 0;
+  }
+}

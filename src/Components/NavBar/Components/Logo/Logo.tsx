@@ -1,10 +1,10 @@
 import classes from "./Logo.module.scss";
-import LogoSVG from "../../../../assets/logo.svg";
+import logo from "../../../../assets/logo.svg";
 
 const Logo = () => {
     return (
         <div className={classes.logo}>
-            <LogoSVG width={100} height={100} />
+            <img src={logo} alt="logo"/>
             <h1>Place Tracker</h1>
         </div>
     );

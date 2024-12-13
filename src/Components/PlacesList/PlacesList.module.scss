@@ -1,0 +1,34 @@
+@use "../../../public/scss/variables" as *;
+.listSection{
+  overflow: auto;
+  @include custom-scrollbar;
+  height: calc(100vh - $nav-bar-height);
+  scrollbar-gutter: stable;
+}
+.list {
+  position: relative;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  width: 100wh;
+}
+
+.greetingsText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1{
+    margin-bottom: 0;
+    font-style: italic;
+
+  }
+  p{
+    font-style: italic;
+    margin-top: 5px;
+    font-size: 24px;
+  }
+}

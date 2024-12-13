@@ -1,0 +1,21 @@
+@use "../../../public/scss/variables" as *;
+
+.listSection{
+  overflow: auto;
+  @include custom-scrollbar;
+  height: calc(100vh - $nav-bar-height);
+  scrollbar-gutter: stable;
+}
+.list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  width: 100wh;
+}
+.noAddedYet{
+  text-align: center;
+  font-style: italic;
+}

@@ -1,16 +1,38 @@
-
+@use "../../../../../public/scss/variables" as *;
 
 .searchContainer {
   display: flex;
+  margin-right: 100px;
+  align-items: end;
   form {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: start;
     input {
       border-radius: 6px;
       font-size: 24px;
-      margin: 5px;
+      margin: 5px 5px 0 5px;
     }
     button {
+      margin-top: 3px;
     }
   }
+}
+.searchInputContainer {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  p {
+    text-align: end;
+    font-size: 24px;
+    justify-content: center;
+    width: 50px;
+    margin: 0;
+  }
+}
+.loadingSpinner{
+  margin: 0 0 3px 3px;
+  width: 30px;
+  height: 30px;
+  animation: rotateCircle 3s infinite linear;
 }

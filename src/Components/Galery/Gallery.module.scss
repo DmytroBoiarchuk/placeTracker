@@ -1,0 +1,44 @@
+.notLoaded {
+  filter: blur(10px);
+}
+
+.gallery {
+  background: rgba(0, 0, 0, 0);
+}
+.imageContainer {
+  background-color: black;
+  width: 80%;
+  height: 90vh;
+  border-radius: 25px;
+  img {
+    cursor: auto;
+    user-select: none;
+    object-fit: contain;
+    position: relative;
+  }
+}
+.prevButton {
+  position: absolute;
+  left: 200px;
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  cursor: pointer;
+}
+.nextButton {
+  position: absolute;
+  right: 200px;
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  cursor: pointer;
+
+}
+.gallery[open] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.gallery::backdrop {
+  background-color: rgba(0, 0, 0, 0.89); /* Полупрозрачный чёрный фон */
+}
