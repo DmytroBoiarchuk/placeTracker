@@ -30,9 +30,12 @@
     margin: 0;
   }
 }
-.loadingSpinner{
-  margin: 0 0 3px 3px;
-  width: 30px;
-  height: 30px;
-  animation: rotateCircle 3s infinite linear;
+.loadingSpinner {
+  display: flex;
+  margin-bottom: 3px;
+  svg {
+    width: 30px;
+    height: 30px;
+    animation: rotateCircle 3s infinite linear;
+  }
 }

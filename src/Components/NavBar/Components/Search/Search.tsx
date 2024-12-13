@@ -5,12 +5,15 @@ import SelectCity from "../SelectCity/SelectCity.tsx";
 import classes from "./Search.module.scss";
 import MediumButton from "../../../Buttons/MediumButton.tsx";
 import { CacheKeyContext } from "../../../../store/cacheKeyContext.tsx";
-import {CacheContextInterface, SearchResultInterface} from "../../../../interfaces/interfaces.ts";
-import {NavigateFunction, useNavigate} from "react-router";
+import {
+  CacheContextInterface,
+  SearchResultInterface,
+} from "../../../../interfaces/interfaces.ts";
+import { NavigateFunction, useNavigate } from "react-router";
 import LoadingSpinner from "../../../../assets/spinner-loading-dots.svg";
 import Error from "../../../Error/Error.tsx";
-const Search = ():JSX.Element => {
-  const navigate:NavigateFunction = useNavigate();
+const Search = (): JSX.Element => {
+  const navigate: NavigateFunction = useNavigate();
   //city coordinates to fetch
   const [coordinates, setCoordinates] = useState<{ lat: string; lng: string }>({
     lat: "",
@@ -18,13 +21,14 @@ const Search = ():JSX.Element => {
   });
 
   //check if coordinates valid for fetching
-  const isCoordinatesValid:boolean = coordinates.lat !== "" && coordinates.lng !== "";
+  const isCoordinatesValid: boolean =
+    coordinates.lat !== "" && coordinates.lng !== "";
   //search keyword to fetch
   const [searchTerm, setSearchTerm] = useState<string>("");
   //flag when fetching new query (to prevent infinitive loop)
   const [isCashed, setIsCashed] = useState<boolean>(false);
   //passing cache keys to Context to then retrieve them in result list section
-  const cacheCtx:CacheContextInterface = useContext(CacheKeyContext);
+  const cacheCtx: CacheContextInterface = useContext(CacheKeyContext);
   //uncontrolled input ref
   const searchRef = useRef<HTMLInputElement>(null);
   //to show error
@@ -58,7 +62,7 @@ const Search = ():JSX.Element => {
     }
   }
   //once result is received - update context with it
-  useEffect(():void => {
+  useEffect((): void => {
     if (data && searchTerm && !isCashed) {
       cacheCtx.addCache(searchTerm, coordinates);
       setIsCashed(true);
@@ -79,11 +83,13 @@ const Search = ():JSX.Element => {
             <MediumButton type="submit">Search</MediumButton>
           </div>
         </form>
-        <LoadingSpinner
+        <span
           className={classes.loadingSpinner}
           style={{ visibility: isLoading ? "visible" : "hidden" }}
-          alt="loading..."
-        />
+          data-testid="loading..."
+        >
+          <LoadingSpinner />
+        </span>
       </div>
       {showError && <Error setShowError={setShowError} error={error} />}
     </>

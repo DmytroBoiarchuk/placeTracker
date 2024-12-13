@@ -59,7 +59,7 @@ describe("PlaceCard Component", () => {
             error: null,
         }));
         renderPlaceCard();
-        expect(screen.getByAltText(/spiner/)).toBeInTheDocument();
+        expect(screen.getByTestId(/spiner/)).toBeInTheDocument();
     });
 
     test("renders place information when fetch is successful", async () => {

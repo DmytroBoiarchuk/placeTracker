@@ -95,7 +95,7 @@ describe("Search Component", () => {
     }));
     renderSearch();
 
-    const spinner = screen.getByAltText(/loading.../i);
+    const spinner = screen.getByTestId(/loading.../i);
     expect(spinner).toHaveStyle("visibility: visible");
   });
 
