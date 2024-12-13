@@ -1,18 +1,28 @@
 import classes from "./Error.module.scss";
-import { useState } from "react";
+import { useNavigate } from "react-router";
+import {Dispatch, SetStateAction} from "react";
 
-const Error = ({ error }: { error: Error }): JSX.Element => {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+const Error = ({ error, setShowError }: { error: Error | null , setShowError: Dispatch<SetStateAction<boolean>> | undefined}): JSX.Element => {
+  const navigate = useNavigate();
+  function handleClose() {
+    if(setShowError)
+    setShowError(false);
+    navigate("/");
+  }
   return (
-    <dialog className={classes.errorDialog} open={isOpen}>
+    <div className={classes.errorBlock}>
       <div className={classes.error}>
         <h1>OoPs!! Something went wrong</h1>
-        <p>{error.message}</p>
-        <button onClick={() => setIsOpen(false)}>
+        <p>{error?.message}</p>
+        <button
+          onClick={() => {
+            handleClose();
+          }}
+        >
           Close
         </button>
       </div>
-    </dialog>
+    </div>
   );
 };
 

@@ -7,7 +7,7 @@ import MediumButton from "../../../Buttons/MediumButton.tsx";
 import { CacheKeyContext } from "../../../../store/cacheKeyContext.tsx";
 import {CacheContextInterface, SearchResultInterface} from "../../../../interfaces/interfaces.ts";
 import {NavigateFunction, useNavigate} from "react-router";
-import loadingSpinner from "../../../../assets/spinner-loading-dots.svg";
+import LoadingSpinner from "../../../../assets/spinner-loading-dots.svg";
 import Error from "../../../Error/Error.tsx";
 const Search = ():JSX.Element => {
   const navigate:NavigateFunction = useNavigate();
@@ -27,6 +27,8 @@ const Search = ():JSX.Element => {
   const cacheCtx:CacheContextInterface = useContext(CacheKeyContext);
   //uncontrolled input ref
   const searchRef = useRef<HTMLInputElement>(null);
+  //to show error
+  const [showError, setShowError] = useState<boolean>(false);
 
   // fetch query
   const { data, isLoading, isError, error } = useQuery<SearchResultInterface>({
@@ -37,6 +39,10 @@ const Search = ():JSX.Element => {
     enabled: searchTerm !== "" && isCoordinatesValid,
     retry: false,
   });
+  // toggle error appearance
+  useEffect(() => {
+    setShowError(isError);
+  }, [isError]);
   //on submit form
   function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
@@ -73,14 +79,13 @@ const Search = ():JSX.Element => {
             <MediumButton type="submit">Search</MediumButton>
           </div>
         </form>
-        <img
+        <LoadingSpinner
           className={classes.loadingSpinner}
-          src={loadingSpinner}
           style={{ visibility: isLoading ? "visible" : "hidden" }}
           alt="loading..."
         />
       </div>
-      {isError && <Error error={error} />}
+      {showError && <Error setShowError={setShowError} error={error} />}
     </>
   );
 };

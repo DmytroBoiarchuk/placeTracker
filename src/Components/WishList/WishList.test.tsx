@@ -6,6 +6,9 @@ import  {
 import { WishListContextInterface } from "../../interfaces/interfaces.ts";
 import { useQuery } from "@tanstack/react-query";
 
+jest.mock("react-router", () => ({
+  useNavigate: jest.fn(),
+}));
 jest.mock("../../constants/constants.ts", () => ({
   VITE_FOURSQUARE_API_KEY: "mock-api-key",
 }));

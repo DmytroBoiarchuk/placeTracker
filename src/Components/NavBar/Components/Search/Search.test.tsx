@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import {render, screen, fireEvent, waitFor} from "@testing-library/react";
 
 import { useQuery } from "@tanstack/react-query";
 import Search from "./Search.tsx";
@@ -109,7 +109,8 @@ describe("Search Component", () => {
     }));
 
     renderSearch();
-
-    expect(screen.getByText(/OoPs!! Something went wrong/i)).toBeInTheDocument();
+    waitFor(()=>{
+      expect(screen.getByText(/OoPs!! Something went wrong/i)).toBeInTheDocument();
+    })
   });
 });

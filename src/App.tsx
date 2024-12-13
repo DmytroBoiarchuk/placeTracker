@@ -5,14 +5,17 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./Components/RootLayout/RootLayout.tsx";
 import WishList from "./Components/WishList/WishList.tsx";
 import { WishListContextProvider} from "./store/wishListContext.tsx";
+import Error from "./Components/Error/Error.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <Error setShowError={undefined} error={null}/>,
     children: [
       { path: "/", element: <PlacesList /> },
       { path: "/wishlist", element: <WishList /> },
     ],
+
   },
 ]);
 

@@ -9,6 +9,9 @@ jest.mock('../../../../constants/constants.ts', ()=>({
 jest.mock("@tanstack/react-query", () => ({
     useQuery: jest.fn(),
 }));
+jest.mock("react-router", () => ({
+    useNavigate: jest.fn(),
+}));
 
 
 describe("PlaceCard Component", () => {

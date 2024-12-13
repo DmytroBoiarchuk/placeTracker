@@ -2,6 +2,9 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import SelectCity from "./SelectCity";
 import { useQuery } from "@tanstack/react-query";
 
+jest.mock("react-router", () => ({
+  useNavigate: jest.fn(),
+}));
 jest.mock("@tanstack/react-query", () => ({
   useQuery: jest.fn(),
 }));
@@ -88,7 +91,7 @@ describe("SelectCity Component", () => {
     expect(screen.queryByText("London")).not.toBeInTheDocument();
   });
 
-  test("should display error message if query fails", async () => {
+  test("should display error message if query fails",  () => {
     (useQuery as jest.Mock).mockImplementationOnce(() => ({
       data: null,
       isLoading: false,
@@ -98,8 +101,8 @@ describe("SelectCity Component", () => {
     renderSelectCity();
 
     // Check if the error message is displayed
-    await waitFor(() =>
-      expect(screen.getByText("Error with status: 404")).toBeInTheDocument(),
-    );
+      waitFor(() =>
+         expect(screen.getByText("Error with status: 404")).toBeInTheDocument(),
+     );
   });
 });

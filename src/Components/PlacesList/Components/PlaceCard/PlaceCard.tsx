@@ -5,8 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getPlaceInfo } from "../../../../Functions/requests/getPlaceInfo.ts";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
-import { useContext, useState } from "react";
-import loadingSpinner from "../../../../assets/spinner-loading-dots.svg";
+import {useContext, useEffect, useState} from "react";
+import LoadingSpinner from "../../../../assets/spinner-loading-dots.svg";
 import { MdOutlineQuestionMark } from "react-icons/md";
 import Gallery from "../../../Galery/Gallery.tsx";
 import PlaceTips from "./Components/PlaceTips/PlaceTips.tsx";
@@ -26,6 +26,9 @@ const PlaceCard = ({ fsq_id }: { fsq_id: string }): JSX.Element => {
     const [isSaved, setIsSaved] = useState<boolean>(wasSaved);
     //toggle tips
     const [isTipsShown, setIsTipsShown] = useState<boolean>(false);
+    //to show an Error
+    const [showError, setShowError] = useState<boolean>(false);
+
     function showTipsHandler():void {
         setIsTipsShown((prevState) => !prevState);
     }
@@ -43,6 +46,9 @@ const PlaceCard = ({ fsq_id }: { fsq_id: string }): JSX.Element => {
         gcTime: 10 * 60 * 1000,
         retry: false,
     });
+    useEffect(() => {
+        setShowError(isError);
+    }, [isError]);
     return (
         <>
             <motion.div layout='position' className={classes.cardExpanded}>
@@ -54,9 +60,8 @@ const PlaceCard = ({ fsq_id }: { fsq_id: string }): JSX.Element => {
                     }
                 >
                     {isPending && (
-                        <img
+                        <LoadingSpinner
                             className={classes.loading}
-                            src={loadingSpinner}
                             alt="spiner"
                         />
                     )}
@@ -123,7 +128,7 @@ const PlaceCard = ({ fsq_id }: { fsq_id: string }): JSX.Element => {
                 </div>
                 <PlaceTips isTipsShown={isTipsShown} tips={data?.tips} />
             </motion.div>
-            {isError && <Error error={error} />}
+            {showError && <Error setShowError={setShowError} error={error} />}
         </>
     );
 };

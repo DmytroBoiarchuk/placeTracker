@@ -1,5 +1,5 @@
 import { searchCities } from "../../../../Functions/requests/searchCities.ts";
-import React, { ChangeEvent, useState } from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import classes from "./SelectCity.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import { City } from "../../../../interfaces/interfaces.ts";
@@ -18,6 +18,8 @@ const SelectCity = ({
   const [inputValue, setInputValue] = useState<string>("");
   //list of matched city
   const [cityMatches, setCityMatches] = useState<City[]>([]);
+  //to show Error
+  const [showError, setShowError] = useState<boolean>(false);
   //request cities list for City selector from geonames API
   const { data, error, isError } = useQuery<City[]>({
     queryKey: ["CityRequest"],
@@ -26,7 +28,9 @@ const SelectCity = ({
     gcTime: 10 * 60 * 1000,
     retry: false,
   });
-
+  useEffect(() => {
+    setShowError(isError);
+  }, [isError]);
   //react on click event when user chose city
   function onCityClickHandler(event: React.MouseEvent<HTMLLIElement>): void {
     if (event.currentTarget.dataset.value)
@@ -97,7 +101,7 @@ const SelectCity = ({
           </ul>
         )}
       </div>
-      {isError && <Error error={error} />}
+      {showError && <Error setShowError={setShowError} error={error} />}
     </>
   );
 };
