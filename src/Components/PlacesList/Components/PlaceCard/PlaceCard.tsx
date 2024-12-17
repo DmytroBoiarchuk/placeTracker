@@ -12,7 +12,7 @@ import PlaceTips from "./Components/PlaceTips/PlaceTips.tsx";
 import { WishListContext } from "../../../../store/wishListContext.tsx";
 import { motion } from "motion/react";
 import Error from "../../../Error/Error.tsx";
-
+//test
 //set size of mini-icon of place
 const sizeOfIcon: string = "64";
 
